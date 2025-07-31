@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://learnf5.github.io/html/plugin/highlight/monokai.css">
     <link rel="stylesheet" type="text/css" href="https://learnf5.github.io/html/asciicast/asciinema-player.css" />
     <style type="text/css">
+      :root {
+        --top-width: 16px;
+      }
+      
       .reveal .slides {
         text-align: left;
       }
@@ -17,6 +21,8 @@
       .reveal {
         font-size: 18px;
         position: relative;
+        padding-top: var(--top-width);
+        height: calc(100% - var(--top-width));
       }
 
       .reveal::before {
@@ -25,7 +31,7 @@
         top: 0;
         right: 0;
         left: 0;
-        height: 16px;
+        height: var(--top-width);
         background-color: green;
       }
 
