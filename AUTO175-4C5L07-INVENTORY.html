@@ -10,22 +10,28 @@
     <link rel="stylesheet" href="https://learnf5.github.io/html/plugin/highlight/monokai.css">
     <link rel="stylesheet" type="text/css" href="https://learnf5.github.io/html/asciicast/asciinema-player.css" />
     <style type="text/css">
+      // The `--top-height` parameter is used to control the height of the style bar at the top of the page
+      // It attempts to offset the height of the `.reveal` element accordingly, and introduce a padding at the
+      // top of the page to accomodate. However, it is worth noting here that the children of 
+      // `.reveal-viewport` are not layed out in a block mode (or a flex or grid mode), but rather they take the
+      // full size of the parent and then use transforms to place themselves in the center. As a consequence, this
+      // fiddle factor may result in content placed above the top bar. If this happens in a consistent manner,
+      // consider divorcing the `--top-height` parameter from the fiddle factor used to control the size of `.reveal`
+  
       :root {
-        --top-width: 16px;
+        --top-height: 16px;
       }
       
       .reveal .slides {
         text-align: left;
       }
 
-      .reveal {
-        font-size: 18px;
+      .reveal-viewport {
         position: relative;
-        padding-top: var(--top-width);
-        height: calc(100% - var(--top-width));
+        padding-top: var(--top-height);
       }
-
-      .reveal::before {
+      
+      .reveal-viewport::before {
         content: "";
         position: absolute;
         top: 0;
@@ -33,6 +39,11 @@
         left: 0;
         height: var(--top-width);
         background-color: green;
+      }
+      
+      .reveal {
+        font-size: 18px;
+        height: calc(100% - var(--top-height));
       }
 
       .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
